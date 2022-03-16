@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "truffle test",
+    "dev": "lite-server"
+ 
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,15 @@
   },
   "homepage": "https://github.com/sandwizard/Decentralized-app-practice#readme",
   "dependencies": {
-    "truffle": "^5.0.2"
+    "mocha": "^9.2.2",
+    "web3": "^1.7.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "chai-bignumber": "^2.0.2",
+    "lite-server": "^2.6.1",
+    "nodemon": "^2.0.15",
+    "truffle": "^5.4.29"
   }
 }
