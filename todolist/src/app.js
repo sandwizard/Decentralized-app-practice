@@ -14,7 +14,9 @@ App ={
 
       window.addEventListener('load', async () => {
       // Modern dapp browsers...
-      
+      if (typeof window.ethereum !== 'undefined') {
+        console.log('MetaMask is installed!');
+      }
       if (window.ethereum) {
       window.web3 = new Web3(ethereum);
       try {
@@ -56,6 +58,7 @@ App ={
       App.contracts.TodoList = TruffleContract(todoList);
       App.contracts.TodoList.setProvider(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
       App.todoList = await App.contracts.TodoList.deployed();
+      console.log(App.todoList);
       },
     render: async() => {
       if(App.loading)
@@ -65,20 +68,32 @@ App ={
       await App.renderTask();
       App.setLoading(false);
     },
+    createTask : async()=>{
+      App.setLoading(true);
+      const content = $('#newTask').val();
+      console.log('content')
+      await App.todoList.createTask(content, {from: App.account});
+      window.location.reload();
+    },
+    toggleCompleted:async (e) =>{
+      App.setLoading(true);
+      const taskId = e.target.name;
+      await App.todoList.toggleCompleted(taskId, {from: App.account});
+      window.location.reload();
+    },
     setLoading: (bool)=>{
       App.loading = bool;
       const loader = $('#loader');
-      const content = $('.list');
+      const content = $('#list');
       console.log(content);
       if (bool){
-
+        content.hide();
         loader.show();
         
       }
       else{
         loader.hide();
-        content.removeClass('hide');
-        console.log(content);
+        content.show();
       }
 
 
@@ -99,11 +114,15 @@ App ={
         new_taskTemplate.find('input')
                         .prop('name',taskID)
                         .prop('checked',taskCompleted)
-                        //.on('click',App.toggleCompleted)
+                        .on('click',App.toggleCompleted)
         
 
 
-        task_ul.append(new_taskTemplate);
+        if (taskCompleted) {
+          $('#completedTaskList').append(new_taskTemplate)
+        } else {
+          $('#taskList').append(new_taskTemplate)
+        }
         new_taskTemplate.show();
 
       }

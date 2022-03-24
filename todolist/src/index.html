@@ -13,6 +13,13 @@
     ul {
   list-style-type: none;
  }
+ #completedTaskList .content {
+        color: grey;
+        text-decoration: line-through;
+      }
+ form{
+     padding-left: 40px;
+ }
     h1{
         width: 100vw;
         display: flex;
@@ -29,7 +36,7 @@
         padding:30px;
         
     }
-    div.list{
+    div#list{
         background-color: bisque;
         height: 300px;
         width: 500px;
@@ -57,7 +64,7 @@
         }
         
     }
-    .list div{
+    #list div{
         height: 100%;
         width: 100%;
         display: block;
@@ -74,8 +81,14 @@
     </h3>
     <div>
         <div id = "loader"></div>
-        <div class="list hide">
+        <div id="list" style="display: none;">
             <div>
+                <form onsubmit="App.createTask(); return false;">
+                    <input id="newTask" type="text" placeholder="Add task ...">
+                    <input type="submit" hidden="">
+                </form>
+                
+
                 <ul id = "taskList">
                     <li id="taskTemplate" style="display: none;">
                         <input type="checkbox" />
@@ -83,6 +96,8 @@
                         
     
                     </li>
+                </ul>
+                <ul id="completedTaskList" class="list-unstyled">
                 </ul>
 
             </div>
