@@ -1,0 +1,3 @@
+[submodule "todolist"]
+	path = todolist
+	url = https://github.com/sandwizard/todolist.git
