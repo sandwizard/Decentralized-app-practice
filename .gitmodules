@@ -1,3 +1,6 @@
 [submodule "todolist"]
 	path = todolist
 	url = https://github.com/sandwizard/todolist.git
+[submodule "nft101"]
+	path = nft101
+	url = https://github.com/sandwizard/nft101.git
