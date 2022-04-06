@@ -7,3 +7,6 @@
 [submodule "Decentralized-app-practice"]
 	path = Decentralized-app-practice
 	url = https://github.com/sandwizard/Decentralized-app-practice.git
+[submodule "vending-machine-app"]
+	path = vending-machine-app
+	url = https://github.com/sandwizard/vending-machine-app.git
