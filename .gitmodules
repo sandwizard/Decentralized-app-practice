@@ -4,3 +4,6 @@
 [submodule "nft101"]
 	path = nft101
 	url = https://github.com/sandwizard/nft101.git
+[submodule "Decentralized-app-practice"]
+	path = Decentralized-app-practice
+	url = https://github.com/sandwizard/Decentralized-app-practice.git
